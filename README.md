@@ -1,11 +1,11 @@
-### I have changed the original README file's name to PROBLEMSTATEMENT.md
-### This file contains my interpretation, design decisions and implementation details that I have made while implementing the solution.
+### The original README file has been renamed to PROBLEMSTATEMENT.md
+### This file contains my interpretation, design decisions and implementation details for the solution.
 
 # Problem Statement Interpretation
 
 By carefully reading the problem statement my analysis was the following:
-1. We already have an existing employee management system, but we have to shift to another which has been recently purchased by the employer.
-2. Though it cannot be done immediately as the existing system is TIGHTLY COUPLED with other services.
+1. We already have an existing employee management system, but we have to shift to a newer system recently purchased by the employer.
+2. However, the transition cannot be done immediately as the existing system is TIGHTLY COUPLED with other services.
 3. My job is basically to build a secure bridge which exposes the employee data to Employees-R-US before we are ready for complete migration.
 
 # Design Decisions
