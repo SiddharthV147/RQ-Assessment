@@ -1,10 +1,9 @@
 package com.challenge.api.model;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-
 import java.time.Instant;
 import java.util.UUID;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -22,63 +21,102 @@ public class EmployeeModel implements Employee {
     private Instant contractTerminationDate;
 
     @Override
-    public UUID getUuid() { return uuid; }
+    public UUID getUuid() {
+        return uuid;
+    }
 
     @Override
-    public void setUuid(UUID uuid) { this.uuid = uuid; }
+    public void setUuid(UUID uuid) {
+        this.uuid = uuid;
+    }
 
     @Override
-    public String getFirstName() { return firstName; }
+    public String getFirstName() {
+        return firstName;
+    }
 
     @Override
-    public void setFirstName(String firstName) { this.firstName = firstName; }
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
 
     @Override
-    public String getLastName() { return lastName; }
+    public String getLastName() {
+        return lastName;
+    }
 
     @Override
-    public void setLastName(String lastName) { this.lastName = lastName; }
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 
     @Override
-    public String getFullName() { return fullName; }
+    public String getFullName() {
+        return fullName;
+    }
 
     @Override
-    public void setFullName(String fullName) { this.fullName = fullName; }
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
 
     @Override
-    public Integer getSalary() { return salary; }
+    public Integer getSalary() {
+        return salary;
+    }
 
     @Override
-    public void setSalary(Integer salary) { this.salary = salary; }
+    public void setSalary(Integer salary) {
+        this.salary = salary;
+    }
 
     @Override
-    public Integer getAge() { return age; }
+    public Integer getAge() {
+        return age;
+    }
 
     @Override
-    public void setAge(Integer age) { this.age = age; }
+    public void setAge(Integer age) {
+        this.age = age;
+    }
 
     @Override
-    public String getJobTitle() { return jobTitle; }
+    public String getJobTitle() {
+        return jobTitle;
+    }
 
     @Override
-    public void setJobTitle(String job) { this.jobTitle = job; }
+    public void setJobTitle(String job) {
+        this.jobTitle = job;
+    }
 
     @Override
-    public String getEmail() { return email; }
+    public String getEmail() {
+        return email;
+    }
 
     @Override
-    public void setEmail(String email) { this.email = email; }
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     @Override
-    public Instant getContractHireDate() { return contractHireDate; }
+    public Instant getContractHireDate() {
+        return contractHireDate;
+    }
 
     @Override
-    public void setContractHireDate(Instant date) { this.contractHireDate = date; }
+    public void setContractHireDate(Instant date) {
+        this.contractHireDate = date;
+    }
 
     @Override
-    public Instant getContractTerminationDate() { return contractTerminationDate; }
+    public Instant getContractTerminationDate() {
+        return contractTerminationDate;
+    }
 
     @Override
-    public void setContractTerminationDate(Instant date) { this.contractTerminationDate = date; }
-
+    public void setContractTerminationDate(Instant date) {
+        this.contractTerminationDate = date;
+    }
 }

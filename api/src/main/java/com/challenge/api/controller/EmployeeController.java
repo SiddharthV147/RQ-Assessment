@@ -2,16 +2,13 @@ package com.challenge.api.controller;
 
 import com.challenge.api.dto.EmployeeRequestDTO;
 import com.challenge.api.model.Employee;
-import java.util.List;
-import java.util.UUID;
-
 import com.challenge.api.service.EmployeeService;
 import jakarta.validation.Valid;
+import java.util.List;
+import java.util.UUID;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 
 /**
  * Fill in the missing aspects of this Spring Web REST Controller. Don't forget to add a Service layer.
@@ -42,7 +39,7 @@ public class EmployeeController {
      * @return Requested Employee if exists
      */
     @GetMapping("/fetch-by-id/{uuid}")
-    public Employee getEmployeeByUuid(@PathVariable  UUID uuid) {
+    public Employee getEmployeeByUuid(@PathVariable UUID uuid) {
         return employeeService.fetchById(uuid);
     }
 
@@ -52,7 +49,7 @@ public class EmployeeController {
      * @return Newly created Employee
      */
     @PostMapping("/create-new")
-    public Employee createEmployee(@Valid @RequestBody  EmployeeRequestDTO dto) {
+    public Employee createEmployee(@Valid @RequestBody EmployeeRequestDTO dto) {
         return employeeService.createNew(dto);
     }
 }
