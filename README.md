@@ -1,9 +1,9 @@
-### The original README file has been renamed to PROBLEMSTATEMENT.md
-### This file contains my interpretation, design decisions and implementation details for the solution.
+#### The original README file has been renamed to PROBLEMSTATEMENT.md
+#### This file contains my interpretation, design decisions and implementation details for the solution.
 
 # Problem Statement Interpretation
 
-After carefully reading the problem statement my analysis was the following:
+After carefully reading the problem statement here's my analysis:
 1. We already have an existing employee management system, but we have to shift to a newer system recently purchased by the employer.
 2. However, the transition cannot be done immediately as the existing system is TIGHTLY COUPLED with other services.
 3. My job is basically to build a secure bridge which exposes the employee data to Employees-R-US before we are ready for complete migration.
@@ -12,7 +12,7 @@ After carefully reading the problem statement my analysis was the following:
 
 1. As the problem statement explicitly states SECURE, I have implemented API-KEY-AUTHENTICATION to validate user requests. The keys are passed via request header and authenticated via Spring Security Filter Chain. In my opinion this was the safest option for this case as for implementing HMAC both the systems must agree upon the same principles, and we don't know what the new system supports. Also for machine-to-machine communication API keys are more appropriate than OAuth bearer tokens.
  
-2. Then I have created a class named EmployeeModel which is supposed to handle employee data which we receive from the existing system. 
+2. Then I have created a class named EmployeeModel which is supposed to handle employee data we receive from the existing system. 
     Member Variables: 
     - firstName            (String)
     - lastName             (String)
