@@ -3,7 +3,7 @@
 
 # Problem Statement Interpretation
 
-By carefully reading the problem statement my analysis was the following:
+After carefully reading the problem statement my analysis was the following:
 1. We already have an existing employee management system, but we have to shift to a newer system recently purchased by the employer.
 2. However, the transition cannot be done immediately as the existing system is TIGHTLY COUPLED with other services.
 3. My job is basically to build a secure bridge which exposes the employee data to Employees-R-US before we are ready for complete migration.
