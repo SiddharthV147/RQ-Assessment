@@ -10,7 +10,7 @@ By carefully reading the problem statement my analysis was the following:
 
 # Design Decisions
 
-1. As the problem statement explicitly states SECURE, I have implemented API-KEY-AUTHENTICATION to validate user requests. The keys are passed via request header and authenticated via Spring Security Filter Chain. In my opinion this was the safest option for this case as for implementing HMAC both the systems must agree upon the same principles and we don't know what does the new system support. Also for machine-to-machine communication API keys are more appropriate than OAuth bearer tokens.
+1. As the problem statement explicitly states SECURE, I have implemented API-KEY-AUTHENTICATION to validate user requests. The keys are passed via request header and authenticated via Spring Security Filter Chain. In my opinion this was the safest option for this case as for implementing HMAC both the systems must agree upon the same principles and we don't know what the new system support. Also for machine-to-machine communication API keys are more appropriate than OAuth bearer tokens.
  
 2. Then I have created a class named EmployeeModel which is supposed to handle employee data which we receive from the existing system. 
     Member Variables: 
