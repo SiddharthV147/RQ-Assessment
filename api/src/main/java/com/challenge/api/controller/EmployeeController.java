@@ -38,7 +38,7 @@ public class EmployeeController {
      * @param uuid Employee UUID
      * @return Requested Employee if exists
      */
-    @GetMapping("/fetch-by-id/{uuid}")
+    @GetMapping("/fetch-by-uuid/{uuid}")
     public Employee getEmployeeByUuid(@PathVariable UUID uuid) {
         return employeeService.fetchById(uuid);
     }

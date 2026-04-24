@@ -1,55 +1,60 @@
-# ReliaQuest's Entry-Level Java Challenge
+### I have changed the original README file's name to PROBLEMSTATEMENT.md
+### This file contains my interpretation, design decisions and implementation details that I have made while implementing the solution.
 
-Please keep the following in mind while working on this challenge:
-* Code implementations will not be graded for **correctness** but rather on practicality
-* Articulate clear and concise design methodologies, if necessary
-* Use clean coding etiquette
-  * E.g. avoid liberal use of new-lines, odd variable and method names, random indentation, etc...
-* Test cases are not required
+# Problem Statement Interpretation
 
-## Problem Statement
+By carefully reading the problem statement my analysis was the following:
+1. We already have an existing employee management system, but we have to shift to another which has been recently purchased by the employer.
+2. Though it cannot be done immediately as the existing system is TIGHTLY COUPLED with other services.
+3. My job is basically to build a secure bridge which exposes the employee data to Employees-R-US before we are ready for complete migration.
 
-Your employer has recently purchased a license to top-tier SaaS platform, Employees-R-US, to off-load all employee management responsibilities.
-Unfortunately, your company's product has an existing employee management solution that is tightly coupled to other services and therefore 
-cannot be replaced whole-cloth. Product and Development leads in your department have decided it would be best to interface
-the existing employee management solution with the commercial offering from Employees-R-US for the time being until all employees can be
-migrated to the new SaaS platform.
+# Design Decisions
 
-Your ask is to expose employee information as a protected, secure REST API for consumption by Employees-R-US web hooks.
-The initial REST API will consist of 3 endpoints, listed in the following section. If for any reason the implementation 
-of an endpoint is problematic, the team lead will accept **pseudo-code** and a pertinent description (e.g. java-doc) of intent.
+1. As the problem statement explicitly states SECURE, I have implemented API-KEY-AUTHENTICATION to validate user requests. The keys are passed via request header and authenticated via Spring Security Filter Chain. In my opinion this was the safest option for this case as for implementing HMAC both the systems must agree upon the same principles and we don't know what does the new system support. Also for machine-to-machine communication API keys are more appropriate than OAuth bearer tokens.
+ 
+2. Then I have created a class named EmployeeModel which is supposed to handle employee data which we receive from the existing system. 
+    Member Variables: 
+    - firstName            (String)
+    - lastName             (String)
+    - fullName             (String)
+    - salary               (Integer)
+    - age                  (Integer)
+    - jobTitle             (String)
+    - email                (String) 
+    - contractHireDate     (Instant) 
+    - contractTerminationDate (Instant)
+     
+3. For storing the data, as stated in the provided controller skeleton code not to worry about any persistent data layer, I have used HashMaps( Key=UUID & Value=Employee ) to store new and existing employee mock data.
 
-Good luck!
+4. I have also added logging to keep track of errors if any are encountered during the execution.
 
-## Endpoints to implement (API module)
+5. Written custom exceptions for handling various scenarios.
 
-_See `com.challenge.api.controller.EmployeeController` for details._
+6. EmployeeRequestDTO for handling incoming requests. I have used Java records for DTOs due to
+   their immutability and validated incoming request fields.
 
-getAllEmployees()
+   Fields:
+    - firstName            (String)  - Required
+    - lastName             (String)  - Required
+    - fullName             (String)
+    - salary               (Integer) - Required, must be positive
+    - age                  (Integer) - Required, minimum 18
+    - jobTitle             (String)  - Required
+    - email                (String)  - Required, must be valid email format
+    - contractHireDate     (Instant) - Required
+    - contractTerminationDate (Instant)
+7. HTTP endpoints implemented : GET : /fetch-all 
+                                GET : /fetch-by-uuid/{uuid} 
+                                POST : /create-new
+8. The API-KEY is stored in a .env file. 
+9. To run the application just change the name of the .env.example to .env and make sure that the request contains the Key = X-API-KEY and Value = {The value of the key} in the header.
 
-    output - list of employees
-    description - this should return all employees, unfiltered
+# Resources used as reference for this project
 
-getEmployeeByUuid(...)
+1. Documents provided with the problem statement
+2. API-Key Authentication : Medium Blog - https://medium.com/@abhishekranjandev/a-comprehensive-guide-to-api-authentication-securing-spring-boot-apis-with-api-key-and-secret-e20b069b367e
+                            YT Video - https://www.youtube.com/watch?v=QtK0VNUkfzY
+3. Exception Handling Docs : Medium - https://medium.com/@sharmapraveen91/handle-exceptions-in-spring-boot-a-guide-to-clean-code-principles-e8a9d56cafe8
+                             YT(Selenium Express) : https://www.youtube.com/watch?v=ZeKP8mxbE2I&t=3843s
 
-    path variable - employee UUID
-    output - employee
-    description - this should return a single employee based on the provided employee UUID
-
-createEmployee(...)
-
-    request body - attributes necessary to create an employee
-    output - employee
-    description - this should return a single employee, if created, otherwise error
-
-## Code Formatting
-
-This project utilizes Gradle plugin [Diffplug Spotless](https://github.com/diffplug/spotless/tree/main/plugin-gradle) to enforce format
-and style guidelines with every build.
-
-To format code according to style guidelines, you can run **spotlessApply** task.
-`./gradlew spotlessApply`
-
-The spotless plugin will also execute check-and-validation tasks as part of the gradle **build** task.
-`./gradlew build`
-# RQ-Assessment
+I have done almost all the work by hand. Even this doc :)
