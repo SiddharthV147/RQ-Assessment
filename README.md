@@ -10,7 +10,7 @@ By carefully reading the problem statement my analysis was the following:
 
 # Design Decisions
 
-1. As the problem statement explicitly states SECURE, I have implemented API-KEY-AUTHENTICATION to validate user requests. The keys are passed via request header and authenticated via Spring Security Filter Chain. In my opinion this was the safest option for this case as for implementing HMAC both the systems must agree upon the same principles and we don't know what the new system support. Also for machine-to-machine communication API keys are more appropriate than OAuth bearer tokens.
+1. As the problem statement explicitly states SECURE, I have implemented API-KEY-AUTHENTICATION to validate user requests. The keys are passed via request header and authenticated via Spring Security Filter Chain. In my opinion this was the safest option for this case as for implementing HMAC both the systems must agree upon the same principles, and we don't know what the new system supports. Also for machine-to-machine communication API keys are more appropriate than OAuth bearer tokens.
  
 2. Then I have created a class named EmployeeModel which is supposed to handle employee data which we receive from the existing system. 
     Member Variables: 
@@ -28,7 +28,7 @@ By carefully reading the problem statement my analysis was the following:
 
 4. I have also added logging to keep track of errors if any are encountered during the execution.
 
-5. Written custom exceptions for handling various scenarios.
+5. Wrote custom exceptions for handling various scenarios.
 
 6. EmployeeRequestDTO for handling incoming requests. I have used Java records for DTOs due to
    their immutability and validated incoming request fields.
@@ -56,5 +56,3 @@ By carefully reading the problem statement my analysis was the following:
                             YT Video - https://www.youtube.com/watch?v=QtK0VNUkfzY
 3. Exception Handling Docs : Medium - https://medium.com/@sharmapraveen91/handle-exceptions-in-spring-boot-a-guide-to-clean-code-principles-e8a9d56cafe8
                              YT(Selenium Express) : https://www.youtube.com/watch?v=ZeKP8mxbE2I&t=3843s
-
-I have done almost all the work by hand. Even this doc :)
