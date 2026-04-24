@@ -1,1 +1,9 @@
-spring.application.name: entry-level-java-challenge
+spring:
+  application:
+    name: entry-level-java-challenge
+  config:
+    import: optional:file:.env[.properties]
+
+api:
+  security:
+    key: ${API_KEY}
